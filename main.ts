@@ -1,11 +1,11 @@
-radio.setGroup(11)
+radio.setGroup(61)
 radio.setTransmitSerialNumber(true)
 
 let y = 0
 let x = 0
 let turn = 0
 let speed = 0
-let direction = "" // levá nebo pravá
+let direction = ""
 let flashIndex = 0
 
 //NeoPixel strip
@@ -30,7 +30,6 @@ function controlServo(xTilt: number, yTilt: number) {
     turn = Math.map(xTilt, -1023, 1023, -200, 200)
     turn = Math.constrain(turn, 0, 200)
 
-    //směr animace
     if (xTilt > 200) {
         direction = "prava"
     } else if (xTilt < -200) {
