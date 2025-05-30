@@ -8,7 +8,7 @@ let speed = 0
 let direction = ""
 let flashIndex = 0
 
-//NeoPixel strip
+//neopixel strip
 let strip = neopixel.create(DigitalPin.P0, 9, NeoPixelMode.RGB)
 
 function updateNeoPixelEffect() {
@@ -23,7 +23,7 @@ function updateNeoPixelEffect() {
     strip.show()
 }
 
-//Motor a tilt
+//motor a tilt
 function controlServo(xTilt: number, yTilt: number) {
     speed = Math.map(yTilt, -1023, 1023, -200, 200)
     speed = Math.constrain(speed, 0, 200)
@@ -41,15 +41,15 @@ function controlServo(xTilt: number, yTilt: number) {
     }
 
     if (yTilt < -10) {
-        //Vpřed
+        //vpřed
         PCAmotor.MotorRun(PCAmotor.Motors.M4, yTilt + xTilt / 3)
         PCAmotor.MotorRun(PCAmotor.Motors.M1, yTilt - xTilt / 3)
     } else if (yTilt > 10) {
-        //Pozpátku
+        //pozpátku
         PCAmotor.MotorRun(PCAmotor.Motors.M1, yTilt)
         PCAmotor.MotorRun(PCAmotor.Motors.M4, yTilt)
     } else {
-        // Stop
+        //stop
         PCAmotor.MotorStopAll()
     }
 }
